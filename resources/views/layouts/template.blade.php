@@ -212,8 +212,16 @@
                             <span class="nav-text">Kategori</span>
                         </a>
                         <ul aria-expanded="false" class="submenu">
-                            <li><a href="/kategori">Data Mahasiswa</a></li>
-                            {{-- <li><a href="/detail-mahasiswa">Detail Mahasiswa</a></li> --}}
+                            @foreach (HelperMahasiswa() as $mahasiswa)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        {{ $mahasiswa['prodi'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+
+
+
                         </ul>
                     </li>
                 </ul>

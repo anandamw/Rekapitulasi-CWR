@@ -37,4 +37,12 @@ class Mahasiswa extends Model
     {
         return DB::table('mahasiswas')->where('prodi', 'Administrasi Publik');
     }
+
+
+
+    public static function __getIpa()
+    {
+        return DB::table('mahasiswas')->where('prodi', 'Pendidikan IPA
+');
+    }
 }
