@@ -14,7 +14,34 @@
         @foreach ($mahasiswas as $item)
             <div class="row mb-4 align-items-center">
                 <div class="col-md-4 text-center">
-                    <img src="{{ url('assets/noimage.jpg') }}" alt="" class="img-fluid rounded-3 border">
+
+                    @php
+
+                        $npm = $item->npm;
+
+                        $folderPath = public_path('ass_mahasiswa/mahasiswa/');
+
+                        $files = scandir($folderPath);
+
+                        $matchingFiles = array_filter($files, function ($file) use ($npm) {
+                            return preg_match('/^' . preg_quote($npm) . '/i', $file); // Cocokkan NPM di awal nama file
+                        });
+
+                        $fileExists = !empty($matchingFiles) ? reset($matchingFiles) : null;
+                    @endphp
+
+                    @if ($fileExists)
+                        <img class="img-fluid rounded-3 border" style="width: 200px;"
+                            src="{{ asset('ass_mahasiswa/mahasiswa/' . $fileExists) }}" alt="Foto Mahasiswa">
+                    @else
+                        <img class="img-fluid rounded-3 border" style="width: 240px;"
+                            src="{{ asset('assets/noimage.jpg') }}" alt="Foto Mahasiswa">
+                    @endif
+
+
+
+
+
                 </div>
                 <div class="col-md-6">
                     <ul class=" container ">

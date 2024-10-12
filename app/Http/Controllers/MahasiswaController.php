@@ -19,12 +19,15 @@ class MahasiswaController extends Controller
     }
     public function mahasiswa()
     {
-        $data = [
-            'mahasiswas' => Mahasiswa::all(),
-        ];
+        $mahasiswas = Mahasiswa::all();
 
-        return view('admin.mahasiswa.home', $data);
+
+
+
+        // Kirim data mahasiswa ke view
+        return view('admin.mahasiswa.home', compact('mahasiswas'));
     }
+
 
 
     public function create()
@@ -50,17 +53,16 @@ class MahasiswaController extends Controller
             'ipk' => $request->ipk,
             'predikat' => $request->predikat,
         ];
-        // dd($data);
 
 
-        // Handle file upload if exists
+
+
         if ($request->hasFile('foto_mhs')) {
             $file = $request->file('foto_mhs');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads'), $filename); // Save to public/uploads
-            $data['foto_mhs'] = $filename; // Add to data array
+            $file->move(public_path('uploads'), $filename);
         }
-        // $get = Mahasiswa::create($data);
+        $get = Mahasiswa::create($data);
 
 
 
@@ -75,13 +77,14 @@ class MahasiswaController extends Controller
     }
     public function update(Request $request, $id)
     {
-        // Temukan data mahasiswa berdasarkan ID
+
         $mahasiswa = Mahasiswa::findOrFail($id);
 
-        // Data yang akan diperbarui
+        $nama_mhs = $request->nama;
+        $npm_mhs = $request->npm;
         $data = [
-            'npm' => $request->npm,
-            'nama' => $request->nama,
+            'npm' => $npm_mhs,
+            'nama' => $nama_mhs,
             'prodi' => $request->prodi,
             'jk' => $request->jk,
             'tmp_lahir' => $request->tmp_lahir,
@@ -96,21 +99,14 @@ class MahasiswaController extends Controller
             'predikat' => $request->predikat,
         ];
 
-        // Handle file upload jika ada gambar baru
-        if ($request->hasFile('foto_mhs')) {
-            // Hapus file lama jika ada
-            if ($mahasiswa->foto_mhs && file_exists(public_path('uploads/' . $mahasiswa->foto_mhs))) {
-                unlink(public_path('uploads/' . $mahasiswa->foto_mhs));
-            }
 
-            // Upload file baru
-            $file = $request->file('foto_mhs');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads'), $filename); // Simpan ke public/uploads
-            $data['foto_mhs'] = $filename; // Masukkan ke array data
-        }
 
-        // Perbarui data mahasiswa
+        // Upload file baru
+        $file = $request->file('foto_mhs');
+        $filename = time() . '__' . $npm_mhs . $nama_mhs . '.'  . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads'), $filename);
+        $data['foto_mhs'] = $filename;
+
         $mahasiswa->update($data);
 
         return redirect('/mahasiswa');

@@ -206,6 +206,16 @@
                         </ul>
                     </li>
 
+                    <li>
+                        <a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+                            <i class="flaticon-381-layer-1"></i>
+                            <span class="nav-text">Kategori</span>
+                        </a>
+                        <ul aria-expanded="false" class="submenu">
+                            <li><a href="/kategori">Data Mahasiswa</a></li>
+                            {{-- <li><a href="/detail-mahasiswa">Detail Mahasiswa</a></li> --}}
+                        </ul>
+                    </li>
                 </ul>
 
 

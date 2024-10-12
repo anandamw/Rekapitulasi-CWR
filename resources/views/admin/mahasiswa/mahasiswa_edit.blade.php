@@ -22,8 +22,7 @@
                         <div class="card-body">
                             <div class="form-validation">
                                 <form class="needs-validation" method="POST"
-                                    action="/mahasiswa/{{ $mahasiswa->id }}/update" novalidate
-                                    enctype="multipart/form-data">
+                                    action="/mahasiswa/{{ $mahasiswa->id }}/update" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-xl-6">

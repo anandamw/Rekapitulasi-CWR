@@ -10,7 +10,7 @@ class PdfController extends Controller
 
     public function view_pdf()
     {
-        $mahasiswas = Mahasiswa::take(6)->get();
+        $mahasiswas = Mahasiswa::take(4)->get();
         $mpdf = new \Mpdf\Mpdf([
             'format' => 'A4'
         ]);

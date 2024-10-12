@@ -49,17 +49,36 @@
                                             <tr>
 
                                                 <td>
-                                                    @if ($item->foto_mhs == null)
-                                                        <!-- Gambar default jika foto tidak ada -->
+                                                    @php
+
+                                                        $npm = $item->npm;
+
+                                                        $folderPath = public_path('ass_mahasiswa/mahasiswa/');
+
+                                                        $files = scandir($folderPath);
+
+                                                        $matchingFiles = array_filter($files, function ($file) use (
+                                                            $npm,
+                                                        ) {
+                                                            return preg_match('/^' . preg_quote($npm) . '/i', $file); // Cocokkan NPM di awal nama file
+                                                        });
+
+                                                        $fileExists = !empty($matchingFiles)
+                                                            ? reset($matchingFiles)
+                                                            : null;
+                                                    @endphp
+
+                                                    @if ($fileExists)
                                                         <img class="rounded-circle" width="35"
-                                                            src="{{ asset('assets/noimage.jpg') }}" alt="No Image">
+                                                            src="{{ asset('ass_mahasiswa/mahasiswa/' . $fileExists) }}"
+                                                            alt="Foto Mahasiswa">
                                                     @else
-                                                        <!-- Tampilkan foto mahasiswa yang ada -->
                                                         <img class="rounded-circle" width="35"
-                                                            src="{{ asset('uploads/' . $item->foto_mhs) }}"
+                                                            src="{{ asset('') }}assets/noimage.jpg"
                                                             alt="Foto Mahasiswa">
                                                     @endif
                                                 </td>
+
 
                                                 <td>{{ $item->npm }}</td>
                                                 <td>{{ $item->nama }}</td>
@@ -94,6 +113,6 @@
         </div>
     </div>
     <!--**********************************
-                                                                                                                                                                                                                                        Content body end
-                                                                                                                                                                                                                                    ***********************************-->
+                                                                                                                                                                                                                                                                                                                                                                                                                        Content body end
+                                                                                                                                                                                                                                                                                                                                                                                                                    ***********************************-->
 @endsection
