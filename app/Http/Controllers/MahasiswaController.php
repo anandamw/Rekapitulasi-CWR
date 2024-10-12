@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-    public function dashboard()
-    {
-        return view('admin.dashboard');
-    }
-
+  
     public function detail()
     {
         $mahasiswas = mahasiswa::all();

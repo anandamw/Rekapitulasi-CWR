@@ -212,15 +212,67 @@
                             <span class="nav-text">Kategori</span>
                         </a>
                         <ul aria-expanded="false" class="submenu">
-                            @foreach (HelperMahasiswa() as $mahasiswa)
-                                <li class="nav-item">
-                                    <a class="nav-link" href=" {{ $mahasiswa['prodi'] }}">
-                                        {{ $mahasiswa['prodi'] }}
-                                    </a>
-                                </li>
-                            @endforeach
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/administrasi/pdf">
+                                    Administrasi Publick
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/manajemen/pdf">
+                                    Manajemen
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/akuntansi/pdf">
+                                    Akuntansi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/agribisnis/pdf">
+                                    Agribisnis
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/pertanian/pdf">
+                                    Teknologi Hasil Pertanian
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/hukum/pdf">
+                                    Hukum
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/sipil/pdf">
+                                    Teknik Sipil
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/informatika/pdf">
+                                    Informatika
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/kebidanan/pdf">
+                                    Kebidanan
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/keperawatan/pdf">
+                                    Keperawatan
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/ipa/pdf">
+                                    Pendidikan IPA
+                                </a>
+                            </li>
 
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="/kategori/pgsd/pdf">
+                                    PGSD
+                                </a>
+                            </li>
 
                         </ul>
                     </li>
