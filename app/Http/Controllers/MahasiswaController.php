@@ -14,17 +14,12 @@ class MahasiswaController extends Controller
 
     public function detail()
     {
-        $mahasiswas = mahasiswa::where("prodi", "Pendidikan IPA")->get();
+        $mahasiswas = mahasiswa::all();
         return view('detail', compact('mahasiswas'));
     }
     public function mahasiswa()
     {
         $mahasiswas = mahasiswa::where("prodi", "Pendidikan IPA")->get();
-
-
-
-
-
         // Kirim data mahasiswa ke view
         return view('admin.mahasiswa.home', compact('mahasiswas'));
     }

@@ -2,18 +2,14 @@
 
 use App\Models\Mahasiswa;
 
-if (!function_exists('mahasiswas')) {
+if (!function_exists('HelperMahasiswa')) {
     function HelperMahasiswa()
     {
-
-        $data = [];
-        $kategori = Mahasiswa::all();
-        foreach ($kategori as $get) {
-            $data[] = [
+        return Mahasiswa::all()->unique('prodi')->map(function ($get) {
+            return [
                 'npm' => $get->npm,
                 'prodi' => $get->prodi
             ];
-        }
-        return $data;
+        })->values()->toArray(); // Mengubah kembali menjadi array
     }
 }

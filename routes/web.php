@@ -17,9 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/detail-mahasiswa', [MahasiswaController::class, 'detail']);
-Route::get('/pdf', [PdfController::class, 'view_pdf']);
+Route::get('/mahasiswa/pdf', [PdfController::class, 'view_pdf']);
 Route::get('/', [MahasiswaController::class, 'dashboard']);
 Route::get('/mahasiswa', [MahasiswaController::class, 'mahasiswa']);
+
+// web.php
+
+
+
 Route::get('/mahasiswa/create', [MahasiswaController::class, 'create']);
 Route::post('/mahasiswa/store', [MahasiswaController::class, 'store']);
 Route::get('/mahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);

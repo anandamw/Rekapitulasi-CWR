@@ -214,7 +214,7 @@
                         <ul aria-expanded="false" class="submenu">
                             @foreach (HelperMahasiswa() as $mahasiswa)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href=" {{ $mahasiswa['prodi'] }}">
                                         {{ $mahasiswa['prodi'] }}
                                     </a>
                                 </li>
