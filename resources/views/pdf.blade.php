@@ -25,15 +25,13 @@
 
     <div class="container">
 
-
-
         @foreach ($mahasiswas as $index => $item)
             @if ($index % 3 == 0 && $index != 0)
                 <div style="page-break-after: always;"></div>
             @endif
 
 
-            <table width="730px" border="0" align="center" cellpadding="1" style="margin-bottom: 15px;  ">
+            <table width="730px" border="1"  align="center" cellpadding="1" style="margin-bottom: 15px;  ">
                 <tr>
                     <td align="center" rowspan="8">
 
@@ -53,12 +51,14 @@
                         @endphp
 
                         @if ($fileExists)
-                            <img class="img-fluid rounded-3 border" style="width: 100px; "
-                                src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('ass_mahasiswa/mahasiswa/' . $fileExists))) }}"
-                                alt="Foto Mahasiswa">
-                        @else
-                            <img class="img-fluid rounded-3 border" style="width: 150px; "
-                                src="{{ asset('assets/noimage.jpg') }}" alt="Foto Mahasiswa">
+                        <div style="width: 120px;  padding: 20px; " >
+                            <img class="img-fluid rounded-3 border" style="width: 100%; "
+                            src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('ass_mahasiswa/mahasiswa/' . $fileExists))) }}"
+                            alt="Foto Mahasiswa">
+                            @else
+                            <img class="img-fluid rounded-3 border" style="width: 100px; padding: 20px;"
+                            src="{{ asset('assets/noimage.jpg') }}" alt="Foto Mahasiswa">
+                        </div>
                         @endif
 
                     </td>
